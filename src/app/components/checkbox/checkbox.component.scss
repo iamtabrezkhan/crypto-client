@@ -1,0 +1,30 @@
+@import '../../sass/variables';
+
+.main {
+    width: 1.2rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.check-box {
+    width: 0.8rem;
+    height: 0.8rem;
+    background: white;
+    border-radius: 2px;
+    border: 1px solid $color-gray;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+}
+
+.is-checked {
+    color: $color-red !important;
+}
+
+.checked-border {
+    border: 1px solid white !important;
+}

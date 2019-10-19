@@ -1,0 +1,18 @@
+<nav class="navbar">
+    <div class="logo font-heading">
+        CRYPTO <span>CLIENT</span>
+    </div>
+    <div (click)="toggleMenu()" class="menu-btn">
+        <i class="fas fa-align-right"></i>
+    </div>
+    <div class="menu font-heading">
+        <ul>
+            <li><a routerLink="" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{exact:
+                true}" >Home</a></li>
+            <li><a routerLink="crypto" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{exact:
+                true}" >Crypto Data</a></li>
+            <li><a routerLink="favourites" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{exact:
+                true}" >Favourites</a></li>
+        </ul>
+    </div>
+</nav>

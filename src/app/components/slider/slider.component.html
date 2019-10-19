@@ -1,0 +1,20 @@
+<div class="main">
+    <div class="wrapper">
+        <div (click)="closeSlider()" class="close"><i class="fas fa-times"></i></div>
+        <div class="container">
+            <div class="heading">Filters</div>
+            <div class="label">Price:</div>
+            <igx-slider [type]="sliderType.RANGE" (onValueChange)="onPriceChange($event)" [minValue]="0" [maxValue]="15000" [(ngModel)]="priceRange"></igx-slider>
+            <div class="values">
+                <div class="min">Min: {{priceRange.lower}}</div>
+                <div class="max">Max: {{priceRange.upper}}</div>
+            </div>
+            <div class="label">Market Cap:</div>
+            <igx-slider [type]="sliderType.RANGE" (onValueChange)="onMarketCapChange($event)" [minValue]="0" [maxValue]="150000000000" [(ngModel)]="marketCapRange"></igx-slider>
+            <div class="values">
+                <div class="min">Min: {{marketCapRange.lower}}</div>
+                <div class="max">Max: {{marketCapRange.upper}}</div>
+            </div>
+        </div>
+    </div>
+</div>

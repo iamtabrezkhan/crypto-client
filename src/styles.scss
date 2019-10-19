@@ -1,1 +1,148 @@
-/* You can add global styles to this file, and also import other style files */
+@import './app/sass/variables';
+
+:root {
+    font-size: 16px;
+}
+
+body {
+    position: relative;
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+    width: 100vw;
+    height: 100vh;
+}
+
+.font-heading {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.main {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.content {
+    width: 100%;
+    height: calc(100% - 65px);
+}
+
+.overlay {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0;
+    top: 0;
+    z-index: 99;
+    display: none;
+    transition: all ease-in-out 0.2s;
+}
+
+.sidebar {
+    display: none;
+    width: 300px;
+    position: fixed;
+    background: white;
+    z-index: 100;
+    box-shadow: -2px 0px 20px rgba(0, 0, 0, 0.2);
+    height: 100%;
+    right: 0;
+    top: 0;
+    transform: translateX(400px);
+    transition: all ease-in-out 0.2s;
+}
+.sidebar-active {
+    transform: translateX(0);
+}
+
+.sidebar .wrapper {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 34px);
+    padding-top: 50px;
+}
+
+.sidebar .wrapper .close {
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    top: 15px;
+    right: 15px;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $color-red;
+    border-radius: 2px;
+    color: $color-red;
+}
+
+.sidebar .menu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.sidebar .menu ul li {
+    text-align: center;
+}
+.sidebar .menu ul li a {
+    text-decoration: none;
+    display: block;
+}
+.sidebar .menu ul li {
+    color: $color-gray;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+.router-link-active {
+    font-weight: bold;
+    color: $color-red !important;
+}
+.sidebar .menu ul li:hover {
+    background: #ebebeb;
+}
+
+.white-overlay {
+    position: fixed;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.5);
+    z-index: 99;
+}
+
+.with-slider {
+    display: block !important;
+}
+
+
+@media only screen and (max-width: 480px) {
+
+    :root {
+        font-size: 14px;
+    }
+    
+    .sidebar {
+        display: block;
+    }
+
+    .overlay {
+        display: block;
+    }
+
+    .compare-box button {
+        padding: 6px 24px;
+    }
+
+    .with-slider {
+        display: none !important;
+    }
+
+}

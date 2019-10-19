@@ -1,0 +1,303 @@
+@import '../../sass/variables';
+
+.main {
+    max-width: 1024px;
+    padding: 20px 10px;
+    padding-top: 20px;
+    width: calc(100% - 20px);
+    height: calc(100% - 40px);
+    margin: 0 auto;
+    position: relative;
+    overflow-y: hidden;
+}
+
+.main .heading {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    color: $color-gray-dark;
+    height: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.heading .button {
+    padding: 0 10px;
+    font-size: 0.9rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $color-red;
+    border-radius: 2px;
+    color: $color-red;
+    margin-left: auto;
+    cursor: pointer;
+}
+
+.heading .icon {
+    display: none;
+}
+
+.table-container {
+    width: 100%;
+    height: calc(100% - 5rem);
+    padding: 0.5rem 0;
+}
+
+.table-container-in-fav {
+    height: calc(100% - 2rem) !important;
+}
+
+.table-container .head {
+    height: 2.5rem;
+    background: #f5f5f5;
+    color: $color-gray;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0px 4px 10px -4px rgba(0, 0, 0, 0.2);
+}
+
+.table-container .row {
+    cursor: pointer;
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #d1d1d1;
+}
+
+.head .head-item {
+    width: calc(33.33% - 23px);
+    border-right: 1px solid #d1d1d1;
+    font-weight: bold;
+    height: calc(100% - 20px);
+    font-size: 0.9rem;
+}
+
+.head .head-item:last-child {
+    border: none;
+    width: calc(33.33% - 20px);
+}
+
+.head .head-item:hover {
+    background: #e7e7e7;
+    cursor: pointer;
+}
+
+.head .name:hover {
+    background: none;
+}
+
+.head .head-item:active {
+    box-shadow:inset 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.head .name:active {
+    box-shadow: none;
+}
+
+.name, .price, .mc {
+    width: calc(33.33% - 20px);
+    padding: 10px;
+}
+
+.data-rows {
+    width: 100%;
+    height: calc(100% - 2.5rem);
+    overflow-y: auto;
+    font-size: 0.9rem;
+    transition: all ease-in-out 0.2s;
+}
+
+.data-rows .option {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 1rem;
+    height: 2rem;
+    color: red;
+    cursor: pointer;
+}
+.data-rows .cross {
+    color: $color-gray;
+}
+
+.data-rows .col {
+    border-right: 1px solid #d1d1d1;
+    width: calc(33.33% - 21px);
+    overflow-x: auto;
+}
+
+.data-rows .col:nth-last-child(2) {
+    border-right: none;
+}
+
+.data-rows .row:nth-child(even) {
+    background: #fafafa;
+}
+
+.data-rows::-webkit-scrollbar {
+    width: 6px;
+    // display: none;
+}
+
+.data-rows::-webkit-scrollbar-thumb {
+    background: #b8b8b8;
+    border-radius: 50px;
+}
+
+.data-rows::-webkit-scrollbar-thumb:hover {
+    background: #696969;
+}
+
+.data-rows .row .mc {
+    width: calc(33.33% - 21px - 1rem);
+}
+
+.pagination-container {
+    width: 100%;
+    height: 3.5rem;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.pagination-container button {
+    border: none;
+    outline: none;
+    padding: 8px 32px;
+    background: $color-red;
+    color: white;
+    text-transform: uppercase;
+    margin: 0 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.pagination-container .btn {
+    padding: 7px 11px;
+    background: white;
+    border: 1px solid $color-red;
+    color: $color-red;
+}
+
+.active-btn {
+    background: $color-red !important;
+    border: 1px solid $color-red !important;
+    color: white !important;
+}
+
+.data-rows .no-results {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: $color-gray;
+}
+
+.data-rows .no-results > div {
+    width: 100%;
+}
+
+.data-rows .no-results .wrapper {
+    text-align: center;
+}
+
+.data-rows .no-results .wrapper .box  {
+    width: 30%;
+}
+
+.data-rows .no-results .wrapper .box svg  {
+    fill: $color-gray;
+}
+
+.data-rows .no-results .wrapper .text {
+    // transform: translateY(-40px);
+}
+
+.is-checked {
+    transition: all ease-in-out 0.2s;
+    background: $color-red !important;
+    color: white !important;
+}
+
+.is-checkbox {
+    transition: all ease-out 0.1s;
+    width: calc(33.33% - 21px - 1.2rem) !important;
+}
+
+.compare-box {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 500px;
+    background: white;
+    z-index: 1;
+    box-shadow: 0px -2px 20px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.compare-box button {
+    border: none;
+    outline: none;
+    padding: 8px 32px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+    background: $color-red;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 480px) {
+
+    .pagination-container button {
+        padding: 8px 12px;
+        margin: 0 5px;
+    }
+
+    .main {
+        padding: 20px 5px;
+        padding-top: 20px;
+        width: calc(100% - 10px);
+        height: calc(100% - 40px);
+        margin: 0 auto;
+    }
+
+    .pagination-container {
+        justify-content: space-evenly;
+    }
+
+    .data-rows .no-results .wrapper .box  {
+        width: 40%;
+    }
+    
+    .data-rows .no-results .wrapper .text {
+        // transform: translateY(-20px);
+    }
+
+    .table-container .row {
+        padding-right: 5px;
+    }
+
+    .heading .button {
+        display: flex;
+    }
+
+    .heading .btn {
+        display: none;
+    }
+
+}

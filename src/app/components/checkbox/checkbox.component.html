@@ -1,0 +1,5 @@
+<div class="main">
+    <div [class.checked-border]="isChecked" (click)="toggle()" class="check-box">
+        <i [class.is-checked]="isChecked" *ngIf="isChecked" @pop class="fas fa-check"></i>
+    </div>
+</div>

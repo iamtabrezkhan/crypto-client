@@ -1,0 +1,80 @@
+<div class="main">
+    <div @popFromBottom *ngIf="canCompare" class="compare-box">
+        <button (click)="compareTwo()">Compare</button>
+        <button (click)="deselectAll()">Deselect all</button>
+    </div>
+    <app-chart
+        *ngIf="chartOpen"
+        [cryptos]="chartData"
+    ></app-chart>
+    <ng-container>
+        <div class="heading font-heading">
+            <div class="text">{{favOptions ? 'Favourites' : 'List of cryptocurrencies'}}</div>
+            <div (click)="openSlider()" class="button icon"><i class="fas fa-filter"></i></div>
+            <div (click)="openSlider()" class="button btn">Filters</div>
+        </div>
+        <div class="table-container" [class.table-container-in-fav]="favOptions">
+            <div class="row head font-heading">
+                <div class="name head-item">Name</div>
+                <div (click)="sortPrice()" class="price head-item">Price
+                    <i *ngIf="!sortByPrice" class="fas fa-caret-up"></i>
+                    <i *ngIf="sortByPrice" class="fas fa-caret-down"></i>
+                </div>
+                <div (click)="sortMarketCap()" class="mc head-item">Market Cap
+                    <i *ngIf="!sortByMarketCap" class="fas fa-caret-up"></i>
+                    <i *ngIf="sortByMarketCap" class="fas fa-caret-down"></i>
+                </div>
+            </div>
+            <div #dataRows class="data-rows">
+                <ng-container *ngIf="favOptions">
+                    <div *ngIf="cryptos?.length < 1" class="no-results">
+                        <div class="wrapper">
+                            <div class="box-img">
+                                <object type="image/svg+xml" data="../../../assets/empty-box-open.svg" class="box">
+                                    Empty <!-- fallback image in CSS -->
+                                </object>
+                            </div>
+                            <div class="text">Ahh! Looks like you don't have any favourite crypto currency yet.</div>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="cryptos">
+                    <ng-container *ngFor="let crypto of cryptos of list">
+                        <div
+                            (press)="onLongPress(crypto, $event)"
+                            (click)="onRowClick(crypto, $event)"
+                            class="row"
+                            [class.is-checked]="isChecked(crypto.id)"
+                        >
+                            <app-checkbox
+                                @showCheck
+                                *ngIf="showCheckbox()"
+                                (onToggle)="onCheckBoxToggle($event)"
+                                [id]="crypto.id"
+                                [isChecked]="isChecked(crypto.id)"
+                            ></app-checkbox>
+                            <div
+                                [class.is-checkbox]="showCheckbox()"
+                                class="name col"
+                            >{{crypto.cmc_rank}} - {{crypto.name}}</div>
+                            <div class="price col">$ {{crypto.quote.USD.price}}</div>
+                            <div class="mc col">$ {{crypto.quote.USD.market_cap}}</div>
+                            <ng-container *ngIf="!favOptions">
+                                <div [class.is-checked]="isChecked(crypto.id)" @pop *ngIf="!alreadyInFavourites(crypto.id)" (click)="addToFavourites(crypto)" title="Add to favourites" class="option heart"><i class="far fa-heart"></i></div>
+                                <div [class.is-checked]="isChecked(crypto.id)" @pop *ngIf="alreadyInFavourites(crypto.id)" (click)="removeFromFavourites(crypto.id)" title="Remove from favourites" class="option heart"><i class="fas fa-heart"></i></div>
+                            </ng-container>
+                            <ng-container *ngIf="favOptions">
+                                <div [class.is-checked]="isChecked(crypto.id)" *ngIf="alreadyInFavourites(crypto.id)" (click)="removeFromFavourites(crypto.id)" title="Remove from favourites" class="option cross"><i class="fas fa-times"></i></div>
+                            </ng-container>
+                        </div>
+                    </ng-container>
+                </ng-container>
+            </div>
+        </div>
+        <div *ngIf="!favOptions" class="pagination-container">
+            <button [ngStyle]="{'background': start === 1 ? 'gray': '#d84343'}" (click)="getPrev()" class="prev">Prev</button>
+            <button (click)="goToPage(page)" [class.active-btn]="start === page" class="btn" *ngFor="let page of paginationArray of list; let i=index">{{page}}</button>
+            <button (click)="getNext()" class="next">Next</button>
+        </div>
+    </ng-container>
+</div>
